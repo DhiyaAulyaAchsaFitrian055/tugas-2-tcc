@@ -94,7 +94,7 @@
     <script>
         $(document).ready(function() {
             function fetchNotes() {
-                $.get("http://localhost:5000/notes", function(data) {
+                $.get("https://backend-dhidi-965240686389.us-central1.run.app/notes", function(data) {
                     let cards = "";
                     data.forEach(note => {
                         cards += `<div class='col-md-4'>
@@ -132,7 +132,7 @@
                 }
 
                 let method = id ? "PATCH" : "POST";
-                let url = id ? `http://localhost:5000/notes/${id}` : "http://localhost:5000/notes";
+                let url = id ? `https://backend-dhidi-965240686389.us-central1.run.app/notes/${id}` : "https://backend-dhidi-965240686389.us-central1.run.app/notes";
 
                 $.ajax({
                     url: url,
@@ -154,7 +154,7 @@
 
             $(document).on("click", ".edit", function() {
                 let id = $(this).data("id");
-                $.get(`http://localhost:5000/notes/${id}`, function(data) {
+                $.get(`https://backend-dhidi-965240686389.us-central1.run.app/notes/${id}`, function(data) {
                     $("#noteId").val(data.id);
                     $("#title").val(data.title);
                     $("#content").val(data.content);
@@ -166,7 +166,7 @@
                 let id = $(this).data("id");
                 if (confirm("Are you sure you want to delete this note?")) {
                     $.ajax({
-                        url: `http://localhost:5000/notes/${id}`,
+                        url: `https://backend-dhidi-965240686389.us-central1.run.app/notes/${id}`,
                         method: "DELETE",
                         success: function() {
                             fetchNotes();
